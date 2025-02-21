@@ -1,0 +1,85 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "react",
+    "eslint-plugin-react-hooks",
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "rules": {
+    "no-plusplus": "off",
+    "linebreak-style": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".tsx"]
+      }
+    ],
+    "react/function-component-definition": [0],
+    "react/react-in-jsx-scope": [0],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "react/prop-types": "off",
+    "import/extensions": "off",
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/no-shadow": "off",
+    "react/jsx-no-constructed-context-values": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "react/require-default-props": "off",
+    "react/destructuring-assignment": "off",
+    "func-names": "off",
+    "no-underscore-dangle": "off",
+    "no-empty": "off",
+    "no-console": "off",
+    "react/no-unused-prop-types": "off",
+    "no-nested-ternary": "off",
+    "no-restricted-syntax": "off",
+    "no-useless-escape": "off",
+    "no-param-reassign": "off",
+    "array-callback-return": "off",
+    "react/no-array-index-key": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "react/jsx-curly-brace-presence": "off",
+
+    // needs to be removed early
+    "import/no-cycle": "off",
+    "react/no-danger": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/button-has-type": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-unused-expressions": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/alt-text": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "consistent-return": "off",
+    "no-alert": "off"
+  }
+}
