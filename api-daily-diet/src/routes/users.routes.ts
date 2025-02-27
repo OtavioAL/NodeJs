@@ -13,11 +13,11 @@ import { z } from "zod";
 import jwt from "jsonwebtoken";
 import { auth } from "../middlewares/auth";
 import { env } from "../env";
+import { calculateBestSequence } from "../utils/calculateSequenceDiet";
 
 export async function usersRoutes(app: FastifyInstance) {
   //Rota de criação de usuario
   app.post("/register", async (request, reply) => {
-    console.log(request.body);
     const createUsersBodySchema = z.object({
       name: z.string(),
       email: z.string().email(),
@@ -25,10 +25,6 @@ export async function usersRoutes(app: FastifyInstance) {
     });
 
     const { name, email, password } = createUsersBodySchema.parse(request.body);
-
-    if (!name || !email || !password) {
-      return reply.status(400).send({ error: "Missing fields" });
-    }
 
     const salt = 10;
     const hash = await bcrypt.hash(password, salt);
@@ -98,6 +94,7 @@ export async function usersRoutes(app: FastifyInstance) {
       const user = request.user;
 
       const meals = knex.table("meals").where({ user_id: user?.id });
+      const mealsData = await meals;
 
       const totalMeals = (await meals.count("*", { as: "totalMeals" })) ?? 0;
       const totalMealsInsideDiet =
@@ -109,9 +106,7 @@ export async function usersRoutes(app: FastifyInstance) {
         Number(totalMeals[0]?.totalMeals) -
         Number(totalMealsInsideDiet[0]?.totalMealsInsideDiet);
 
-      //Planejar a logica para contar a melhor sequencia de refeicoes dentro da dieta
-
-      const bestSequence = 0;
+      const bestSequence = calculateBestSequence(mealsData);
 
       reply.status(200).send({
         data: {
