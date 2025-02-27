@@ -7,7 +7,7 @@ export async function auth(request: FastifyRequest, reply: FastifyReply) {
   const authToken = request.headers.authorization;
 
   if (!authToken) {
-    return reply.status(403).send({ error: "Token inválido" });
+    return reply.status(403).send({ error: "Invalid token" });
   }
 
   const [, token] = authToken.split(" ");
@@ -16,13 +16,13 @@ export async function auth(request: FastifyRequest, reply: FastifyReply) {
     const { sub: userId } = verify(token, env.JWT_SECRET);
 
     if (typeof userId !== "string") {
-      return reply.status(403).send({ error: "Token inválido" });
+      return reply.status(403).send({ error: "Invalid token" });
     }
 
     request.user = {
       id: userId,
     };
   } catch {
-    return reply.status(403).send({ error: "Token inválido" });
+    return reply.status(403).send({ error: "Invalid token" });
   }
 }

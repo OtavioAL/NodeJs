@@ -153,7 +153,7 @@ export async function mealsRoutes(app: FastifyInstance) {
 
         await knex.table("meals").where({ id }).delete();
 
-        return reply.status(201).send();
+        return reply.status(204).send();
       } catch (error) {
         console.log(error);
         return reply.status(500).send({ error: "Internal Server Error" });
