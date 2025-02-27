@@ -39,9 +39,6 @@ export async function mealsRoutes(app: FastifyInstance) {
 
         const dateMeals = new Date(date);
 
-        if (!name || !description || !date || !insideDiet)
-          return reply.status(400).send({ error: "Bad Request" });
-
         const user = request.user;
 
         await knex.table("meals").insert({
