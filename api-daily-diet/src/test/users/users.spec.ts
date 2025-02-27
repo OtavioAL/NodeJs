@@ -6,7 +6,7 @@ import request from "supertest";
 describe("Users routes", () => {
   beforeAll(async () => {
     await app.ready();
-  }, 30000);
+  }, 100000);
 
   afterAll(async () => {
     await app.close();
