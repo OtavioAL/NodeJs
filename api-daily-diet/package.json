@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "dev": "tsx watch src/server.ts",
     "knex": "node --import tsx ./node_modules/knex/bin/cli.js"
   },
@@ -33,6 +33,6 @@
     "eslint": "^9.20.1",
     "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
-    "vitest": "^3.0.6"
+    "vitest": "^3.0.7"
   }
 }
