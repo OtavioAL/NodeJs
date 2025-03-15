@@ -17,7 +17,7 @@ export default defineConfig({
         extends: true,
         test: {
           environment: "node",
-          include: ["src/use-cases/**/*.spec.ts"],
+          include: ["src/services/**/*.spec.ts"],
           name: "unit",
         },
       },
