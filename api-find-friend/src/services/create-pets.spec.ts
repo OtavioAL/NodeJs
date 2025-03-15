@@ -14,7 +14,7 @@ describe("Create Pet Use Case", () => {
     sut = new CreatePetUseCase(petsRepository, orgsRepository);
   });
 
-  it("should to create gym", async () => {
+  it("should to create pet", async () => {
     const org = await orgsRepository.create({
       name: "Org 1",
       email: "email@com",
