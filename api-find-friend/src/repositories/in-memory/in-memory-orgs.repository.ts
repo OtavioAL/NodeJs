@@ -1,10 +1,17 @@
 import { Decimal } from "@prisma/client/runtime/library";
 import crypto from "node:crypto";
 import { FindManyNearbyParams, OrgsRepository } from "../orgs.repository";
-import { Org, Prisma } from "@prisma/client";
+import { Org, Pet, Prisma } from "@prisma/client";
 import { getDistanceBetweenCoordinates } from "@/utils/get-distance-between-coordinates";
 
 export class InMemoryOrgsRepository implements OrgsRepository {
+  async findMany(city: string): Promise<Pet[]> {
+    const orgs = this?.items?.filter((item) => item.city === city) || [];
+
+    const petsAvailable = orgs.flatMap((org) => org.pets);
+
+    return petsAvailable;
+  }
   public items: Org[] = [];
 
   async findById(id: string): Promise<Org | null> {
